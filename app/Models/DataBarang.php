@@ -22,4 +22,11 @@ class DataBarang extends Model
         'stok_total_rusak',
         'stok_tersedia'
     ];
+
+    protected $casts = [
+        'harga_terakhir' => 'decimal:2',
+        'stok_total_baik' => 'integer',
+        'stok_total_rusak' => 'integer',
+        'stok_tersedia' => 'integer',
+    ];
 }

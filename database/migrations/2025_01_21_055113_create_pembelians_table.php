@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('pembelians', function (Blueprint $table) {
             $table->id();
             $table->string('no_transaksi')->unique();
-            $table->date('tanggal_transaksi');
-            $table->string('no_invoice')->unique();
-            $table->string('kode_barang');
-            $table->integer('jumlah_stok_baik')->default(0);
+            $table->date('tgl_transaksi');
+            $table->string('no_invoice');
+            $table->foreignId('kode_barang')->constrained('data_barangs');
+            $table->integer('jumlah');
             $table->decimal('harga', 15, 2);
             $table->text('keterangan')->nullable();
             $table->timestamps();

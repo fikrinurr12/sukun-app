@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('data_barangs', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Defaultnya adalah unsignedBigInteger
             $table->string('kode')->unique();
             $table->string('foto')->nullable();
             $table->string('nama');

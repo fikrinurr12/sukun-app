@@ -17,12 +17,40 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
+        'name', 
+        'email', 
+        'password', 
+        'role', 'divisi'
     ];
+
+    public function roleUser()
+    {
+        return $this->belongsTo(RoleUser::class, 'role', 'kode_role');
+    }
+
+    // Accessor untuk mendapatkan role name
+    public function getRoleNameAttribute()
+    {
+        return $this->roleUser->role;
+    }
+
+    // Menambahkan method untuk memeriksa role
+    public function isSuperAdmin()
+    {
+        return $this->roleUser->role === 'Superadmin';
+    }
+
+    public function isAdmin()
+    {
+        return $this->roleUser->role === 'Admin';
+    }
+
+    public function isUser()
+    {
+        return $this->roleUser->role === 'User';
+    }
 
     /**
      * The attributes that should be hidden for serialization.

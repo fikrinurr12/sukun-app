@@ -10,17 +10,18 @@ class Peminjaman extends Model
     use HasFactory;
 
     protected $fillable = [
-        'no_transaksi',
-        'nama_peminjam',
-        'divisi',
-        'tanggal',
-        'kode_barang',
-        'nama_barang',
-        'jumlah',
-        'keterangan',
+        'no_transaksi', 
+        'nama_peminjam', 
+        'divisi', 
+        'tgl_peminjaman', 
+        'kode_barang', 
+        'nama_barang', 
+        'jumlah', 
+        'keterangan'
     ];
 
-    public function pengembalians(){
-        return $this->hasMany(Pengembalian::class);
+    public function barang()
+    {
+        return $this->belongsTo(DataBarang::class, 'kode');
     }
 }

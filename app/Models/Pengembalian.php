@@ -10,13 +10,15 @@ class Pengembalian extends Model
     use HasFactory;
 
     protected $fillable = [
-        'peminjaman_id',
-        'jumlah_baik',
-        'jumlah_rusak',
-        'keterangan',
+        'transaksi_keluar_id', 
+        'kondisi_baik', 
+        'kondisi_rusak', 
+        'jumlah', 
+        'keterangan'
     ];
 
-    public function peminjaman(){
+    public function transaksiKeluar()
+    {
         return $this->belongsTo(Peminjaman::class);
     }
 }

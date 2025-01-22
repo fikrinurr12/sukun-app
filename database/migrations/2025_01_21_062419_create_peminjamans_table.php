@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('peminjamen', function (Blueprint $table) {
-            $table->id();
+        Schema::create('peminjamans', function (Blueprint $table) {
+            $table->id(); // Ini akan menghasilkan unsignedBigInteger
             $table->string('no_transaksi')->unique();
             $table->string('nama_peminjam');
             $table->string('divisi');
-            $table->date('tanggal');
-            $table->string('kode_barang');
+            $table->date('tgl_peminjaman');
+            $table->foreignId('kode_barang')->constrained('data_barangs');
             $table->string('nama_barang');
             $table->integer('jumlah');
             $table->text('keterangan')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('peminjamen');
+        Schema::dropIfExists('peminjamans');
     }
 };

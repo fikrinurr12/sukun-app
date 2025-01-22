@@ -10,7 +10,13 @@ class RoleUser extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kode_role',
+        'kode_role', 
         'role'
     ];
+
+    // Anda bisa menambahkan relasi untuk menghubungkan dengan user
+    public function users()
+    {
+        return $this->hasMany(User::class, 'role', 'kode_role');
+    }
 }

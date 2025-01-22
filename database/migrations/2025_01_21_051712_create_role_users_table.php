@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('role_users', function (Blueprint $table) {
-            $table->id();
-            $table->integer("kode_role");
+            $table->id(); // Ini defaultnya menggunakan unsignedBigInteger
+            $table->unsignedInteger('kode_role')->unique(); // Unsigned Integer
             $table->string('role');
             $table->timestamps();
         });
